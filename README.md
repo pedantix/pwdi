@@ -44,3 +44,7 @@ This package is to supply a quick and easy to use dependency injection framework
 ### Acknowledgement
 
 This project is heavily inspired by Vapor. Further the Spring framework inspired the projects granular features.
+
+### Motivation
+
+Testing Cocoa frameworks can be hard, its almost as if they are setup without testing in mind. There are many strategies to get around this however using a DI(dependency injection) strategy provides a common way of helping with this effort. This project was written to enable TDD accross active projects as they upgrade to swift 5, with a common set of tools. After the initial milestoes are met please add issues to expand functionality.
