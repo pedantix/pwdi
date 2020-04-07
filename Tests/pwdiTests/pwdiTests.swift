@@ -3,7 +3,7 @@ import XCTest
 
 final class pwdiTests: XCTestCase {
     func testExample() {
-        XCTAssertEqual(pwdi().text, "Hello, World!")
+        XCTAssertEqual("Hello, World!", "Hello, World!")
     }
 
     static var allTests = [
