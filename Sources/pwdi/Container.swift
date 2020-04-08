@@ -5,6 +5,7 @@
 //  Created by Shaun Hubbard on 4/7/20.
 //
 
-protocol Container {
-    func make<S>(_ type: S.Type) -> S
+public protocol Container {
+    /// Make a service based on an interface.
+    func make<S: Service>(_ type: S.Type) throws -> S
 }
