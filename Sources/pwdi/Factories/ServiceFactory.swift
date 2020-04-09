@@ -8,6 +8,6 @@
 import Foundation
 
 public protocol ServiceFactory {
-    var types:[Any.Type] { get }
+    var types: [Any.Type] { get }
     func get(container: Container) throws -> Service
 }

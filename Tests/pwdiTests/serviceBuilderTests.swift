@@ -5,14 +5,13 @@
 //  Created by Shaun Hubbard on 4/8/20.
 //
 
-
 import Foundation
 import XCTest
 import pwdi
 
 private protocol NotAService { }
 
-final class  serviceBuilderTests: XCTestCase {
+final class serviceBuilderTests: XCTestCase {
   func testCapturingAService() {
     let serv = ServiceA()
     let serviceCapture = service(ServiceA.self) { _ in serv }
@@ -42,11 +41,10 @@ final class  serviceBuilderTests: XCTestCase {
         XCTAssert(ObjectIdentifier(type) == ObjectIdentifier(ServiceA.self))
     }
   }
-  
 
   static var allTests = [
       ("testCapturingAService", testCapturingAService),
       ("testImplicitlyCapturingAService", testImplicitlyCapturingAService),
-      ("testCapturingAServiceWithMultipleTypes", testCapturingAServiceWithMultipleTypes),
+      ("testCapturingAServiceWithMultipleTypes", testCapturingAServiceWithMultipleTypes)
   ]
 }

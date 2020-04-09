@@ -12,10 +12,8 @@ var globalContainer: Container = GlobalContainer(serviceFactories: [])
 
 struct GlobalContainer: Container {
     let serviceFactories: [ServiceFactory]
-    
+
     func make<S>(_ type: S.Type) throws -> S {
         throw ServiceError.noServiceFound()
     }
 }
-
-/// Build the container with the Prototype, Singleton, and User Builders

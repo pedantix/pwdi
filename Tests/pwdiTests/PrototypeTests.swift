@@ -11,13 +11,13 @@ import pwdi
 
 final class PrototypeTests: XCTestCase {
   func testBuildingAServiceOneService() {
-  let prototypes = Prototype {
-    service { _ in
-      ServiceA()
+    let prototypes = Prototype {
+      service { _ in
+        ServiceA()
+      }
     }
-  }
 
-  XCTAssertEqual(prototypes.factories.count, 1)
+    XCTAssertEqual(prototypes.factories.count, 1)
   }
 
   func testBuildingAServiceTwoService() {
@@ -33,8 +33,7 @@ final class PrototypeTests: XCTestCase {
     XCTAssertEqual(prototypes.factories.count, 2)
   }
 
-
   static var allTests = [
-    ("testBuildingAServiceTwoService", testBuildingAServiceTwoService),
+    ("testBuildingAServiceTwoService", testBuildingAServiceTwoService)
   ]
 }

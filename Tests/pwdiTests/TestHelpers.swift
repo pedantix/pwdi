@@ -8,14 +8,11 @@
 import Foundation
 import pwdi
 
-protocol MyCoolService {
-    
-}
+protocol MyCoolService { }
 
 struct ServiceA: Equatable, Service, MyCoolService {
     var serviceId = 1
 }
-
 
 struct ServiceB: Equatable, Service, MyCoolService {
     var serviceId = 1
