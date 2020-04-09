@@ -1,6 +1,8 @@
 
 # pwdi - Property Wrapper Dependency Injection
 
+![Swift](https://github.com/pedantix/pwdi/workflows/Swift/badge.svg)
+![SwiftLint](https://github.com/pedantix/pwdi/workflows/SwiftLint/badge.svg)
   
 
 This package is to supply a quick and easy to use dependency injection framework with many common features. This system was inspired by server side containers however it was written with the needs of clients in mind. It is not tailored for injection scopes that are common in multisession applications like servers. It is highly opinionated and probably not a fit for every project. However it was built on and for SPM as a drop in quick and easy DI container to facilitate  organization and writing testable code.
