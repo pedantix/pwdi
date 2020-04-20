@@ -8,12 +8,12 @@
 import Foundation
 import pwdi
 
-protocol MyCoolService { }
+protocol MyCoolService: Injectable { }
 
-struct ServiceA: Equatable, Service, MyCoolService {
+struct ServiceA: Equatable, Injectable, MyCoolService {
     var serviceId = 1
 }
 
-struct ServiceB: Equatable, Service, MyCoolService {
+struct ServiceB: Equatable, Injectable, MyCoolService {
     var serviceId = 1
 }

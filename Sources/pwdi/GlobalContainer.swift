@@ -16,4 +16,9 @@ struct GlobalContainer: Container {
     func make<S>(_ type: S.Type) throws -> S {
         throw ServiceError.noServiceFound()
     }
+
+  static func make(_ block: () -> [ServiceFactory]) {
+    let serviceFactories = block()
+    globalContainer = GlobalContainer(serviceFactories: serviceFactories)
+  }
 }

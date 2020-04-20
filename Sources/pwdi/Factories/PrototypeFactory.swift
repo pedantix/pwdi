@@ -8,10 +8,9 @@
 import Foundation
 
 struct PrototypeFactory: ServiceFactory {
-    var block: ServiceClosure
-    var types: [Any.Type]
+  var service: Service
 
-    func get(container: Container) throws -> Service {
-        return try block(container)
-    }
+  func get(container: Container) throws -> Injectable {
+    return try service.serviceBlock(container)
+  }
 }

@@ -12,7 +12,7 @@ import pwdi
 final class PrototypeTests: XCTestCase {
   func testBuildingAServiceOneService() {
     let prototypes = Prototype {
-      service { _ in
+      Service { _ in
         ServiceA()
       }
     }
@@ -22,10 +22,10 @@ final class PrototypeTests: XCTestCase {
 
   func testBuildingAServiceTwoService() {
     let prototypes = Prototype {
-      service { _ in
+      Service { _ in
         ServiceA()
       }
-      service { _ in
+      Service { _ in
         ServiceB()
       }
     }
@@ -34,6 +34,7 @@ final class PrototypeTests: XCTestCase {
   }
 
   static var allTests = [
+    ("testBuildingAServiceOneService", testBuildingAServiceOneService),
     ("testBuildingAServiceTwoService", testBuildingAServiceTwoService)
   ]
 }

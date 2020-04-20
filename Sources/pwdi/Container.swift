@@ -7,5 +7,5 @@
 
 public protocol Container {
     /// Make a service based on an interface.
-    func make<S: Service>(_ type: S.Type) throws -> S
+    func make<S: Injectable>(_ type: S.Type) throws -> S
 }

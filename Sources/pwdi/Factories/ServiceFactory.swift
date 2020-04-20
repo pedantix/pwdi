@@ -8,6 +8,6 @@
 import Foundation
 
 public protocol ServiceFactory {
-    var types: [Any.Type] { get }
-    func get(container: Container) throws -> Service
+    var service: Service { get }
+    func get(container: Container) throws -> Injectable
 }

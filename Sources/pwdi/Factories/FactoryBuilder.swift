@@ -9,32 +9,32 @@ import Foundation
 
 @_functionBuilder
 public struct FactoryBuilder {
-  private static func convert(captures: [ServiceCapture]) -> ServiceFactories {
-    return captures.map({ capture in PrototypeFactory(block: capture.1, types: capture.0) })
+  private static func convert(services: [Service]) -> ServiceFactories {
+    return services.map({ service in PrototypeFactory(service: service) })
   }
 
   public static func buildBlock() -> ServiceFactories {
      return []
   }
 
-  public static func buildBlock(_ capture: ServiceCapture) -> ServiceFactories {
-     return convert(captures: [capture])
+  public static func buildBlock(_ capture: Service) -> ServiceFactories {
+     return convert(services: [capture])
   }
 
-  public static func buildBlock(_ captures: ServiceCapture...) -> [ServiceCapture] {
+  public static func buildBlock(_ captures: Service...) -> [Service] {
      return captures
   }
 
-  public static func buildIf(_ content: ServiceCapture?) -> ServiceFactories {
-    if let content = content { return convert(captures: [content]) }
+  public static func buildIf(_ content: Service?) -> ServiceFactories {
+    if let content = content { return convert(services: [content]) }
     return []
   }
 
-  public static func buildEither(first: ServiceCapture) -> ServiceCapture {
+  public static func buildEither(first: Service) -> Service {
     return first
   }
 
-  public static func buildEither(second: ServiceCapture) -> ServiceCapture {
+  public static func buildEither(second: Service) -> Service {
     return second
   }
 }
