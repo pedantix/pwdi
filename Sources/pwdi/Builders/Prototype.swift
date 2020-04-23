@@ -7,15 +7,6 @@
 
 import Foundation
 
-public typealias ServiceFactories = [ServiceFactory]
-
-typealias FactoryProducers = [FactoryProducer]
-
-///  Can this not be public?
-protocol FactoryProducer {
-    var factories: ServiceFactories { get }
-}
-
 /// Build Prototype dependencies using the serviceBuilder functions
 public struct Prototype: FactoryProducer {
   public let factories: ServiceFactories

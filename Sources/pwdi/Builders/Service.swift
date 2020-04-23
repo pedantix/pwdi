@@ -7,8 +7,6 @@
 
 import Foundation
 
-public typealias ServiceClosure = (Container) throws -> Injectable
-
 public struct Service {
   internal let types: [Any.Type]
   internal let serviceBlock: ServiceClosure
