@@ -9,10 +9,10 @@ import Foundation
 
 public typealias ServiceFactories = [ServiceFactory]
 
-public typealias FactoryProducers = [FactoryProducer]
+typealias FactoryProducers = [FactoryProducer]
 
 ///  Can this not be public?
-public protocol FactoryProducer {
+protocol FactoryProducer {
     var factories: ServiceFactories { get }
 }
 
