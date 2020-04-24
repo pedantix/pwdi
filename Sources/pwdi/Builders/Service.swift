@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Service {
+public struct Service: ServiceHasher {
   internal let types: [Any.Type]
   internal let serviceBlock: ServiceClosure
   internal private(set) var qualifier: Qualifier = .default
@@ -30,5 +30,9 @@ public struct Service {
   public mutating func qualifier(_ qual: Qualifier) -> Service {
     self.qualifier = qual
     return self
+  }
+
+  internal var servicesHashes: [Int] {
+    return  self.types.map { calculateServiceHash(qualifier: self.qualifier, type: $0) }
   }
 }

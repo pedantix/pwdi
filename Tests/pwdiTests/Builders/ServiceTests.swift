@@ -39,6 +39,15 @@ final class ServiceTests: XCTestCase {
     XCTAssertEqual(ObjectIdentifier(service.types.last ?? Any.self), ObjectIdentifier(ServiceB.self))
   }
 
+  func testHashesProducedAreUnique() {
+    let servicesHashes = Service(types: [MyCoolService.self, ServiceB.self]) { _ in
+      ServiceB()
+    }.servicesHashes
+
+    XCTAssertEqual(servicesHashes.count, 2)
+    XCTAssertNotEqual(servicesHashes.first, servicesHashes.last)
+  }
+
   static var allTests = [
       ("testCapturingAService", testCapturingAService),
       ("testImplicitlyCapturingAService", testImplicitlyCapturingAService),
