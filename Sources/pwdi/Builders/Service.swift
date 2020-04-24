@@ -10,6 +10,7 @@ import Foundation
 public struct Service {
   internal let types: [Any.Type]
   internal let serviceBlock: ServiceClosure
+  internal private(set) var qualifier: Qualifier = .default
 
   public init<T: Injectable>(_ block: @escaping (Container) -> T) {
     serviceBlock = block
@@ -24,5 +25,10 @@ public struct Service {
   public init(types: [Any.Type], _ block: @escaping ServiceClosure) {
     self.types = types
     serviceBlock = block
+  }
+
+  public mutating func qualifier(_ qual: Qualifier) -> Service {
+    self.qualifier = qual
+    return self
   }
 }
