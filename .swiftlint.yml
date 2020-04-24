@@ -1,10 +1,3 @@
 disabled_rules: # rule identifiers to exclude from running
   - todo
   - type_name
-type_name:
-  min_length: 4 # only warning
-  max_length: # warning and error
-    warning: 40
-    error: 50
-  excluded: pwdi # excluded via string
-  allowed_symbols: ["_"] # these are allowed in type names
