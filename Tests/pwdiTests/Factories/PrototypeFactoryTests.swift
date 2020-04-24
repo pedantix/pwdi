@@ -15,16 +15,16 @@ private let testService = Service { _ in
 
 final class PrototypeFactoryTests: XCTestCase {
   func testGet_createsInjectible() throws {
-    let prototypeFactory = PrototypeFactory(service: testService)
-    let injectable = try prototypeFactory.get(container: DummyContainer())
+    let factory = PrototypeFactory(service: testService)
+    let injectable = try factory.get(container: DummyContainer())
     XCTAssertTrue(injectable is ClassBoundInjectable)
   }
 
   func testGet_createsAUniqueInjectibleEachTime() throws {
-    let prototypeFactory = PrototypeFactory(service: testService)
+    let factory = PrototypeFactory(service: testService)
     let container = DummyContainer()
-    let injectable = try prototypeFactory.get(container: container) as AnyObject
-    let injectable2 = try prototypeFactory.get(container: container) as AnyObject
+    let injectable = try factory.get(container: container) as AnyObject
+    let injectable2 = try factory.get(container: container) as AnyObject
     XCTAssertFalse(injectable === injectable2)
   }
 
