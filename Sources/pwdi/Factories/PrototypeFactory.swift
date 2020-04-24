@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct PrototypeFactory: ServiceFactory {
+final class PrototypeFactory: ServiceFactory {
+  internal init(service: Service) {
+    self.service = service
+  }
+
   var service: Service
 
   func get(container: Container) throws -> Injectable {

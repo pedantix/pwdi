@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol ServiceFactory {
+public protocol ServiceFactory: class {
     var service: Service { get }
     func get(container: Container) throws -> Injectable
 }
