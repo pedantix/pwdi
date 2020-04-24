@@ -15,5 +15,15 @@ struct ServiceA: Equatable, Injectable, MyCoolService {
 }
 
 struct ServiceB: Equatable, Injectable, MyCoolService {
-    var serviceId = 1
+    var serviceId = 2
+}
+
+final class ClassBoundInjectable: Injectable {
+
+}
+
+final class DummyContainer: Container {
+  func make<S>(_ type: S.Type) throws -> S where S: Injectable {
+    fatalError("this is not implemented")
+  }
 }

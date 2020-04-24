@@ -7,7 +7,8 @@ public func allTests() -> [XCTestCaseEntry] {
         testCase(ServiceTests.allTests),
         testCase(SingletonTests.allTests),
         testCase(SessionTests.allTests),
-        testCase(ConcurrencyTests.allTests)
+        testCase(ConcurrencyTests.allTests),
+        testCase(PrototypeFactoryTests.allTests)
     ]
 }
 #endif

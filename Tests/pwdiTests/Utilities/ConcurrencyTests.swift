@@ -51,6 +51,8 @@ final class ConcurrencyTests: XCTestCase {
   }
 
   static var allTests = [
-    ("testReturnsValue", testReturnsValue)
+    ("testReturnsValue", testReturnsValue),
+    ("testIsCalledOnADifferntQueue", testIsCalledOnADifferntQueue),
+    ("testIsSafeToCallWithinItself", testIsSafeToCallWithinItself)
   ]
 }
