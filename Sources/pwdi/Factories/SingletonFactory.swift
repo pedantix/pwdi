@@ -14,9 +14,19 @@ final class SingletonFactory: ServiceFactory {
 
   var service: Service
 
+  private var resolvedInjectable: Injectable?
+
   func get(container: Container) throws -> Injectable {
-    return try threadSafeExecute {
+    if let injectable = resolvedInjectable {
+      return injectable
+    }
+
+    let injectable = try threadSafeExecute {
       try service.serviceBlock(container)
     }
+
+    resolvedInjectable = injectable
+
+    return injectable
   }
 }
