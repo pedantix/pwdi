@@ -1,5 +1,5 @@
 //
-//  FactoryBuilder.swift
+//  ServiceBuilder.swift
 //  
 //
 //  Created by Shaun Hubbard on 4/8/20.
@@ -8,7 +8,7 @@
 import Foundation
 
 @_functionBuilder
-public struct FactoryBuilder {
+public struct ServiceBuilder {
   private static func convert(services: [Service]) -> ServiceFactories {
     return services.map({ service in PrototypeFactory(service: service) })
   }

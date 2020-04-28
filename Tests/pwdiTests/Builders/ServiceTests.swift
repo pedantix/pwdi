@@ -42,7 +42,7 @@ final class ServiceTests: XCTestCase {
   func testHashesProducedAreUnique() {
     let servicesHashes = Service(types: [MyCoolService.self, ServiceB.self]) { _ in
       ServiceB()
-    }.servicesHashes
+    }.serviceIDs
 
     XCTAssertEqual(servicesHashes.count, 2)
     XCTAssertNotEqual(servicesHashes.first, servicesHashes.last)

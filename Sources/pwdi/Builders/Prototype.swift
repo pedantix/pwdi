@@ -12,11 +12,11 @@ public struct Prototype: FactoryProducer {
   public let factories: ServiceFactories
 
   // This is ugly, FactoryBuilder should be able to do this
-  public init(@FactoryBuilder _ content: () -> Service) {
-    factories = [content()].map { service in  PrototypeFactory(service: service) }
+  public init(@ServiceBuilder _ builder: () -> Service) {
+    factories = [builder()].map { service in  PrototypeFactory(service: service) }
   }
 
-  public init(@FactoryBuilder _ content: () -> [Service]) {
-    factories = content().map { service in  PrototypeFactory(service: service) }
+  public init(@ServiceBuilder _ builder: () -> [Service]) {
+    factories = builder().map { service in  PrototypeFactory(service: service) }
   }
 }

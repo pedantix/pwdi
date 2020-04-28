@@ -7,12 +7,12 @@
 
 import Foundation
 
-public struct Service: ServiceHasher {
+public struct Service {
   internal let types: [Any.Type]
   internal let serviceBlock: ServiceClosure
   internal private(set) var qualifier: Qualifier = .default
 
-  public init<T: Injectable>(_ block: @escaping (Container) -> T) {
+  public init<T: Injectable>(_ block: @escaping (Container) throws -> T) {
     serviceBlock = block
     types = [T.self]
   }
@@ -27,12 +27,13 @@ public struct Service: ServiceHasher {
     serviceBlock = block
   }
 
-  public mutating func qualifier(_ qual: Qualifier) -> Service {
-    self.qualifier = qual
-    return self
+  public func qualifier(_ qual: Qualifier) -> Service {
+    var dup = self
+    dup.qualifier = qual
+    return dup
   }
 
-  internal var servicesHashes: [Int] {
-    return  self.types.map { calculateServiceHash(qualifier: self.qualifier, type: $0) }
+  internal var serviceIDs: [ServiceID] {
+    return  self.types.map { ServiceID(qualifier: self.qualifier, type: $0) }
   }
 }

@@ -9,6 +9,6 @@ import Foundation
 
 typealias FactoryProducers = [FactoryProducer]
 
-protocol FactoryProducer {
+public protocol FactoryProducer {
     var factories: ServiceFactories { get }
 }
