@@ -13,32 +13,31 @@ This package is to supply a quick and easy to use dependency injection framework
 
   
 
-- [ ] Global Container
+- [X] Global Container
 
   
 
-- [ ] Scopes - forgoing most traditional server side scopes
+- [X] Scopes - forgoing most traditional server side scopes
 
   
 
-    - [ ] Prototype - Use an expiring caching strategy that responds to memory warnings
+    - [X] Prototype - Use an expiring caching strategy that responds to memory warnings
 
       
 
-    - [ ] Singleton - Long lived dependencies
+    - [X] Singleton - Long lived dependencies
 
       
 
-    - [ ] Session - For multi user applications
+    - [X] Session - For multi user applications
 
   
 
-- [ ] Qualifiers - Traditional Tags, with a swift static `Name`
+- [X] Qualifiers - Traditional Tags, with a swift static `Name`
 
   
 
-- [ ] Property Wrappers
-
+- [ ] Property Wrappers - for injection `@Inject` and `@Inject(Qualifier.notDefault)`
   
 
 - [ ]  Usage Guide with examples from tests
