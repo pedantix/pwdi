@@ -9,30 +9,30 @@ import Foundation
 import XCTest
 @testable import pwdi
 
-protocol MyCoolService: Injectable { }
+protocol MyCoolService { }
 
-struct ServiceA: Equatable, Injectable, MyCoolService {
+struct ServiceA: Equatable, MyCoolService {
     var serviceId = 1
 }
 
-struct ServiceB: Equatable, Injectable, MyCoolService {
+struct ServiceB: Equatable, MyCoolService {
     var serviceId = 2
 }
 
-struct ServiceC: Injectable {
+struct ServiceC {
   let serviceA: ServiceA
   let serviceB: ServiceB
 }
 
-struct ServiceD: Injectable {
+struct ServiceD {
   let serviceC: ServiceC
 }
 
-final class ClassBoundInjectable: MyCoolService, Injectable {
+final class ClassBoundInjectable: MyCoolService {
 
 }
 
-final class ClassBoundInjectable2: MyCoolService, Injectable {
+final class ClassBoundInjectable2: MyCoolService {
 
 }
 
@@ -57,7 +57,7 @@ class DummyServiceFactory: ServiceFactory {
     fatalError("nyi")
   }
 
-  func get(container: Container) throws -> Injectable {
+  func get(container: Container) throws -> Any {
     fatalError("nyi")
   }
 }

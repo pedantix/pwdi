@@ -7,4 +7,4 @@
 
 import Foundation
 
-public protocol Injectable { }
+//public protocol Injectable { }

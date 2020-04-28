@@ -14,9 +14,9 @@ final class SingletonFactory: ServiceFactory {
 
   var service: Service
 
-  private var resolvedInjectable: Injectable?
+  private var resolvedInjectable: Any?
 
-  func get(container: Container) throws -> Injectable {
+  func get(container: Container) throws -> Any {
     if let injectable = resolvedInjectable {
       return injectable
     }

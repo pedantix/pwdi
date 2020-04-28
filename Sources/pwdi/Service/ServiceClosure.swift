@@ -7,4 +7,4 @@
 
 import Foundation
 
-public typealias ServiceClosure = (Container) throws -> Injectable
+public typealias ServiceClosure = (Container) throws -> Any

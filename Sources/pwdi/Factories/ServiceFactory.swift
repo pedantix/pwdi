@@ -9,5 +9,5 @@ import Foundation
 
 public protocol ServiceFactory: class {
     var service: Service { get }
-    func get(container: Container) throws -> Injectable
+    func get(container: Container) throws -> Any
 }

@@ -14,7 +14,7 @@ final class PrototypeFactory: ServiceFactory {
 
   var service: Service
 
-  func get(container: Container) throws -> Injectable {
+  func get(container: Container) throws -> Any {
     return try service.serviceBlock(container)
   }
 }

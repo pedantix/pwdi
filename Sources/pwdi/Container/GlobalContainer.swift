@@ -12,7 +12,7 @@ internal var globalContainer: Container = GlobalContainer(serviceFactories: [])
 private let defaultContainerServiceID = ServiceID(qualifier: .default, type: Container.self)
 private let globalContainerServiceID = ServiceID(qualifier: .default, type: GlobalContainer.self)
 
-public final class GlobalContainer: Container, Injectable {
+public final class GlobalContainer: Container {
   internal init(serviceFactories: ServiceFactories) {
     let globalContainerFactory = SingletonFactory(
       // swiftlint:disable:next force_cast

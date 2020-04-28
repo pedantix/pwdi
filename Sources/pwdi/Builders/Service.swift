@@ -12,7 +12,7 @@ public struct Service {
   internal let serviceBlock: ServiceClosure
   internal private(set) var qualifier: Qualifier = .default
 
-  public init<T: Injectable>(_ block: @escaping (Container) throws -> T) {
+  public init<T>(_ block: @escaping (Container) throws -> T) {
     serviceBlock = block
     types = [T.self]
   }

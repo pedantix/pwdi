@@ -14,23 +14,23 @@ final class SessionFactory: ServiceFactory {
 
   var service: Service
 
-  private var resolvedInjectable: Injectable?
+  private var resolvedObject: Any?
 
-  func get(container: Container) throws -> Injectable {
-    if let injectable = resolvedInjectable {
+  func get(container: Container) throws -> Any {
+    if let injectable = resolvedObject {
       return injectable
     }
 
-    let injectable = try threadSafeExecute {
+    let object = try threadSafeExecute {
       try service.serviceBlock(container)
     }
 
-    resolvedInjectable = injectable
+    resolvedObject = object
 
-    return injectable
+    return object
   }
 
   internal func sessionChanged() {
-    resolvedInjectable = nil
+    resolvedObject = nil
   }
 }
