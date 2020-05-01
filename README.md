@@ -37,7 +37,7 @@ This package is to supply a quick and easy to use dependency injection framework
 
   
 
-- [ ] Property Wrappers - for injection `@Inject` and `@Inject(Qualifier.notDefault)`
+- [X] Property Wrappers - for injection `@Inject` and `@Inject(Qualifier.notDefault)`
   
 
 - [ ]  Usage Guide with examples from tests
