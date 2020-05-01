@@ -12,8 +12,6 @@ public func allTests() -> [XCTestCaseEntry] {
         testCase(ServiceFactoriesContainerTests.allTests),
         testCase(ServiceCacheTests.allTests),
         testCase(GlobalContainerTests.allTests),
-        testCase(InjectTests.allTests),
-        XCTestCase(SafeInjectTests.allTests)
-    ]
+        testCase(InjectTests.allTests)    ]
 }
 #endif
