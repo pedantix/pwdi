@@ -28,8 +28,11 @@ struct ServiceD {
   let serviceC: ServiceC
 }
 
-final class ClassBoundInjectable: MyCoolService {
-
+final class ClassBoundInjectable: MyCoolService, Equatable {
+  let uuid = UUID()
+  static func == (_ rhs: ClassBoundInjectable, _ lhs: ClassBoundInjectable) -> Bool {
+    return rhs.uuid == lhs.uuid
+  }
 }
 
 final class ClassBoundInjectable2: MyCoolService {

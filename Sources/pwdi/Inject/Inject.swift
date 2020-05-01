@@ -8,16 +8,19 @@
 import Foundation
 
 @propertyWrapper
-public struct Inject<T> {
+public class Inject<T> {
   private let qualifier: Qualifier
-
+  private var value: T?
   public init(qualifier: Qualifier = .default) {
     self.qualifier = qualifier
   }
 
   public var wrappedValue: T {
+    if let val = value { return val }
     do {
-      return try globalContainer.make(T.self, qualifier: qualifier)
+      let val = try globalContainer.make(T.self, qualifier: qualifier)
+      value = val
+      return val
     } catch {
       preconditionFailure(error.localizedDescription)
     }

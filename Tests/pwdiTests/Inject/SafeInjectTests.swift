@@ -11,6 +11,7 @@ import pwdi
 
 private class DummyClass {
   @SafeInject var serviceA: ServiceA?
+  @SafeInject var classBoundInjectable: ClassBoundInjectable?
 }
 
 final class SafeInjectTests: GlobalContainerTestCase {
@@ -26,6 +27,20 @@ final class SafeInjectTests: GlobalContainerTestCase {
     }
 
     XCTAssertNotNil(DummyClass().serviceA)
+  }
+
+  func testPrototypePersistAmongstInstaces() {
+    GlobalContainer {
+      Prototype {
+        Service { _ in ClassBoundInjectable() }
+      }
+    }
+
+    let dummyOne = DummyClass()
+    XCTAssertEqual(dummyOne.classBoundInjectable, dummyOne.classBoundInjectable)
+
+    let dummyTwo = DummyClass()
+    XCTAssertNotEqual(dummyOne.classBoundInjectable, dummyTwo.classBoundInjectable)
   }
 
   static var allTests = [

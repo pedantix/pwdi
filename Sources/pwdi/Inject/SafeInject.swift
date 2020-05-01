@@ -8,16 +8,21 @@
 import Foundation
 
 @propertyWrapper
-public struct SafeInject<T> {
+public class SafeInject<T> {
   private let qualifier: Qualifier
+
+  private var cachedValue: T?
 
   public init(qualifier: Qualifier = .default) {
     self.qualifier = qualifier
   }
 
   public var wrappedValue: T? {
+    guard cachedValue == nil else { return cachedValue }
     do {
-      return try globalContainer.make(T.self, qualifier: qualifier)
+      let value = try globalContainer.make(T.self, qualifier: qualifier)
+      cachedValue = value
+      return value
     } catch {
       return nil
     }

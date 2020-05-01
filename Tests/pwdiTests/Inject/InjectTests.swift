@@ -14,6 +14,7 @@ import Nimble
 
 private class DummyClass {
   @Inject var serviceA: ServiceA
+  @Inject var classBoundInjectable: ClassBoundInjectable
 }
 
 final class InjectTests: GlobalContainerTestCase {
@@ -35,7 +36,23 @@ final class InjectTests: GlobalContainerTestCase {
     XCTAssertNotNil(DummyClass().serviceA)
   }
 
+  func testPrototypePersistAmongstInstaces() {
+    GlobalContainer {
+      Prototype {
+        Service { _ in ClassBoundInjectable() }
+      }
+    }
+
+    let dummyOne = DummyClass()
+    XCTAssertEqual(dummyOne.classBoundInjectable, dummyOne.classBoundInjectable)
+
+    let dummyTwo = DummyClass()
+    XCTAssertNotEqual(dummyOne.classBoundInjectable, dummyTwo.classBoundInjectable)
+  }
+
   static var allTests = [
-    ("testInjectingWhenObjectDoesExist", testInjectingWhenObjectDoesExist)
+    ("testInjectingWhenObjectDoesExist", testInjectingWhenObjectDoesExist),
+    ("testPrototypePersistAmongstInstaces", testPrototypePersistAmongstInstaces),
+    ("testPrototypePersistAmongstInstaces", testPrototypePersistAmongstInstaces)
   ]
 }
