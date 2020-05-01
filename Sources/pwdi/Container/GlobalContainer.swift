@@ -48,6 +48,10 @@ public final class GlobalContainer: Container {
     }
   }
 
+  public func resetSession() {
+    serviceFactories.serviceFactories.compactMap { $0 as? SessionFactory }.forEach { $0.sessionChanged() }
+  }
+
   @discardableResult
   public init?(@FactoryBuilder _ builder: @escaping () -> ServiceFactories) {
     globalContainer = GlobalContainer(serviceFactories: builder())

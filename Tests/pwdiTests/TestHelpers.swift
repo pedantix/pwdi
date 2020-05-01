@@ -50,6 +50,10 @@ final class DummyContainer: Container {
   }
 
   init() {  }
+
+  func resetSession() {
+    fatalError("nyi")
+  }
 }
 
 class DummyServiceFactory: ServiceFactory {

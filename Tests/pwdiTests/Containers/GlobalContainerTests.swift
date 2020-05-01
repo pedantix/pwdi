@@ -79,6 +79,21 @@ final class GlobalContainerTests: GlobalContainerTestCase {
     try XCTAssertThrowsError({try globalContainer.make(ServiceA.self) }())
   }
 
+  func testResetSession() throws {
+    GlobalContainer {
+      Session {
+        Service { _ in ClassBoundInjectable() }
+      }
+    }
+    let original = try globalContainer.make(ClassBoundInjectable.self)
+
+    try XCTAssertEqual(ObjectIdentifier(original), ObjectIdentifier(globalContainer.make(ClassBoundInjectable.self)))
+
+    globalContainer.resetSession()
+
+    try XCTAssertNotEqual(ObjectIdentifier(original), ObjectIdentifier(globalContainer.make(ClassBoundInjectable.self)))
+  }
+
   static let allTests = [
     ("testLookupInjectibleFromGlobalContainer", testLookupInjectibleFromGlobalContainer),
     ("testContainerLookup", testContainerLookup),
