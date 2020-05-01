@@ -15,13 +15,12 @@ private class DummyClass {
 }
 
 final class InjectTests: GlobalContainerTestCase {
-#if canImport(ObjectiveC)
   func testInjectingWhenObjectDoesNotExist() {
     expect { () -> Void in
       _ = DummyClass().serviceA
     }.to(throwAssertion())
   }
-#endif
+
   func testInjectingWhenObjectDoesExist() {
     GlobalContainer {
       Prototype {
@@ -33,6 +32,7 @@ final class InjectTests: GlobalContainerTestCase {
   }
 
   static var allTests = [
+    ("testInjectingWhenObjectDoesNotExist", testInjectingWhenObjectDoesNotExist),
     ("testInjectingWhenObjectDoesExist", testInjectingWhenObjectDoesExist)
   ]
 }
