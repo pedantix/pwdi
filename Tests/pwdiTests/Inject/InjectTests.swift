@@ -8,7 +8,9 @@
 import Foundation
 import XCTest
 import pwdi
+#if canImport(Darwin)
 import Nimble
+#endif
 
 private class DummyClass {
   @Inject var serviceA: ServiceA
@@ -16,9 +18,11 @@ private class DummyClass {
 
 final class InjectTests: GlobalContainerTestCase {
   func testInjectingWhenObjectDoesNotExist() {
+    #if canImport(Darwin)
     expect { () -> Void in
       _ = DummyClass().serviceA
     }.to(throwAssertion())
+    #endif
   }
 
   func testInjectingWhenObjectDoesExist() {

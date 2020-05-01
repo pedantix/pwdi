@@ -27,4 +27,9 @@ final class SafeInjectTests: GlobalContainerTestCase {
 
     XCTAssertNotNil(DummyClass().serviceA)
   }
+
+  static var allTests = [
+    ("testInjectingWhenObjectDoesNotExist", testInjectingWhenObjectDoesNotExist),
+    ("testInjectingWhenObjectDoesExist", testInjectingWhenObjectDoesExist)
+  ]
 }
