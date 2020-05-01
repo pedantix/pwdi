@@ -32,7 +32,6 @@ final class InjectTests: GlobalContainerTestCase {
   }
 
   static var allTests = [
-    ("testInjectingWhenObjectDoesNotExist", testInjectingWhenObjectDoesNotExist),
     ("testInjectingWhenObjectDoesExist", testInjectingWhenObjectDoesExist)
   ]
 }

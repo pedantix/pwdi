@@ -29,6 +29,7 @@ final class SafeInjectTests: GlobalContainerTestCase {
   }
 
   static var allTests = [
+    ("testInjectingWhenObjectDoesNotExist", testInjectingWhenObjectDoesNotExist),
     ("testInjectingWhenObjectDoesExist", testInjectingWhenObjectDoesExist)
   ]
 }
