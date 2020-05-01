@@ -60,7 +60,7 @@ public final class GlobalContainer: Container {
     return nil
   }
 
-  internal static func resetGlobalContainer() {
+  public static func resetGlobalContainer() {
     globalContainer = GlobalContainer(serviceFactories: [])
   }
 }
