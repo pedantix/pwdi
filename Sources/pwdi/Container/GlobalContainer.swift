@@ -35,16 +35,18 @@ public final class GlobalContainer: Container {
       return try make(from: cacheResult)
     }
 
-    do {
-      let serviceFactory = try serviceFactories.search(serviceID: serviceID)
+    return try threadSafeExecute {
+      do {
+        let serviceFactory = try serviceFactories.search(serviceID: serviceID)
 
-      guard let service = try serviceFactory.get(container: self) as? S
-        else { throw ServiceError.registrationError(type: S.self) }
-      serviceCache.putSuccess(serviceID, factory: serviceFactory)
-      return service
-    } catch {
-      serviceCache.putFailure(serviceID, error: error)
-      throw error
+        guard let service = try serviceFactory.get(container: self) as? S
+          else { throw ServiceError.registrationError(type: S.self) }
+        serviceCache.putSuccess(serviceID, factory: serviceFactory)
+        return service
+      } catch {
+        serviceCache.putFailure(serviceID, error: error)
+        throw error
+      }
     }
   }
 

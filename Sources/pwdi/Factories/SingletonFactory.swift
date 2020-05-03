@@ -21,9 +21,7 @@ final class SingletonFactory: ServiceFactory {
       return injectable
     }
 
-    let injectable = try threadSafeExecute {
-      try service.serviceBlock(container)
-    }
+    let injectable = try service.serviceBlock(container)
 
     resolvedInjectable = injectable
 

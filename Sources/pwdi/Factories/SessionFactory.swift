@@ -21,9 +21,7 @@ final class SessionFactory: ServiceFactory {
       return injectable
     }
 
-    let object = try threadSafeExecute {
-      try service.serviceBlock(container)
-    }
+    let object = try service.serviceBlock(container)
 
     resolvedObject = object
 
