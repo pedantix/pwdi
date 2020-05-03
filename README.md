@@ -114,23 +114,31 @@ class MyInjectedObject {
   @Inject var bar: Bar
   @Inject var baz: Baz
   @Inject var container: Container
+}
 
-  func prototypeExample() {
-    foo // 0x001, a different object every call
-    foo // 0x002, a different object every call
-  }
+func prototypeExample() {
+  let obj1 = MyInjectedObject()
+  let obj2 = MyInjectedObject()
+  obj1.foo // 0x001, a different object every injection
+  obj2.foo // 0x002, a different object every injection
+}
 
-  func singletonExample() {
-    bar // instance 0x001.
-    bar // instance 0x001. the same instance until the app resets
-  }
+func singletonExample() {
+  let obj1 = MyInjectedObject()  
+  let obj2 = MyInjectedObject()  
+  obj1.bar // instance 0x001.
+  ob2bar // instance 0x001. the same instance until the app resets
+}
 
-  func singletonExample() {
-    baz // instance 0x001.
-    baz // instance 0x001. the same instance until the session is reset
-    container.resetSession()
-    baz // instance 0x002
-  }
+func sessionExample() {
+  let obj1 = MyInjectedObject()  
+  let obj2 = MyInjectedObject()  
+  let obj3 = MyInjectedObject()  
+  
+  obj1.baz // instance 0x001.
+  obj2.baz // instance 0x001. the same instance until the session is reset
+  container.resetSession()
+  obj3.baz // instance 0x002
 }
 ```
 
