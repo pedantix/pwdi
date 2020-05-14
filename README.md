@@ -24,8 +24,8 @@ func setupTheContainerSomeWhere() {
 }
 
 class Foo {
-  @SafeInject vara bar: Bar?
-  @SafeInject vara baz: Baz?
+  @SafeInject var bar: Bar?
+  @SafeInject var baz: Baz?
 }
 
 func someCodeSomeWhereInYourProject() {
@@ -48,8 +48,8 @@ func setupTheContainerSomeWhere() {
 }
 
 class Foo {
-  @Inject vara bar: Bar
-  @Inject vara baz: Baz
+  @Inject var bar: Bar
+  @Inject var baz: Baz
 }
 
 func someCodeSomeWhereInYourProject() {
@@ -79,8 +79,8 @@ func setupTheContainerSomeWhere() {
 }
 
 class Foo {
-  @Inject vara bar: Bar
-  @Inject(.myQualifier) vara myBar: Bar
+  @Inject var bar: Bar
+  @Inject(.myQualifier) var myBar: Bar
 }
 
 func someCodeSomeWhereInYourProject() {
