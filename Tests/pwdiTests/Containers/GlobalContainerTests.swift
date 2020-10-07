@@ -39,7 +39,7 @@ final class GlobalContainerTests: GlobalContainerTestCase {
     let exp3 = expectation(description: "3")
     let exp4 = expectation(description: "4")
     exp4.expectedFulfillmentCount = 1
-     
+
     GlobalContainer {
       Prototype {
         Service(type: ServiceA.self) { _ in
