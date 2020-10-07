@@ -11,12 +11,7 @@ import Foundation
 public struct Prototype: FactoryProducer {
   public let factories: ServiceFactories
 
-  // This is ugly, FactoryBuilder should be able to do this
-  public init(@ServiceBuilder _ builder: () -> Service) {
-    factories = [builder()].map { service in  PrototypeFactory(service: service) }
-  }
-
-  public init(@ServiceBuilder _ builder: () -> [Service]) {
+  public init(@ServiceBuilder builder: () -> [Service]) {
     factories = builder().map { service in  PrototypeFactory(service: service) }
   }
 }

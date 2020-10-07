@@ -17,10 +17,6 @@ public struct ServiceBuilder {
      return []
   }
 
-  public static func buildBlock(_ capture: Service) -> ServiceFactories {
-     return convert(services: [capture])
-  }
-
   public static func buildBlock(_ captures: Service...) -> [Service] {
      return captures
   }

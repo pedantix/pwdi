@@ -55,13 +55,13 @@ public final class GlobalContainer: Container {
   }
 
   @discardableResult
-  public init?(@FactoryBuilder _ builder: @escaping () -> ServiceFactories) {
+  public init?(@FactoryBuilder builder: @escaping () -> ServiceFactories) {
     globalContainer = GlobalContainer(serviceFactories: builder())
     return nil
   }
 
   @discardableResult
-  public init?(@FactoryBuilder _ builder: @escaping () -> FactoryProducer) {
+  public init?(@FactoryBuilder builder: @escaping () -> FactoryProducer) {
     globalContainer = GlobalContainer(serviceFactories: builder().factories)
     return nil
   }

@@ -1,9 +1,12 @@
-// swift-tools-version:5.2
+// swift-tools-version:5.3
 
 import PackageDescription
 
 let package = Package(
     name: "pwdi",
+    platforms: [
+      .macOS(.v10_10), .iOS(.v9), .tvOS(.v9)
+    ],
     products: [
         .library(
             name: "pwdi",
@@ -11,7 +14,7 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "FregaderoDeCocina", url: "https://github.com/pedantix/fregadero-de-cocina", from: "0.0.2"),
-        .package(name: "Nimble", url: "https://github.com/Quick/Nimble.git", from: "8.0.1")
+        .package(name: "Nimble", url: "https://github.com/Quick/Nimble.git", from: "8.1.2")
     ],
     targets: [
         .target(
