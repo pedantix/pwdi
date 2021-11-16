@@ -13,7 +13,8 @@ import Nimble
 #endif
 
 private class DummyClass {
-  @Inject var serviceA: ServiceA
+  @Inject var serviceA: MyCoolService
+  @Inject(qualifier: .cooler) var serviceB: MyCoolService
   @Inject var classBoundInjectable: ClassBoundInjectable
 }
 
@@ -30,12 +31,15 @@ final class InjectTests: GlobalContainerTestCase {
 
   func testInjectingWhenObjectDoesExist() {
     GlobalContainer {
-      Prototype {
-        Service { _ in ServiceA() }
+      Singleton {
+        Service(types: [MyCoolService.self, ServiceA.self]) { _ in ServiceA() }
+        Service(types: [MyCoolService.self, ServiceB.self]) { _ in ServiceB() }.qualifier(.cooler)
       }
     }
 
-    XCTAssertNotNil(DummyClass().serviceA)
+      XCTAssertNotNil(DummyClass().serviceA)
+      XCTAssertTrue(DummyClass().serviceA is ServiceA)
+      XCTAssertTrue(DummyClass().serviceB is ServiceB)
   }
 
   func testPrototypePersistAmongstInstaces() {
@@ -57,4 +61,8 @@ final class InjectTests: GlobalContainerTestCase {
     ("testPrototypePersistAmongstInstaces", testPrototypePersistAmongstInstaces),
     ("testPrototypePersistAmongstInstaces", testPrototypePersistAmongstInstaces)
   ]
+}
+
+extension Qualifier {
+    static let cooler = Qualifier(name: "cooler")
 }

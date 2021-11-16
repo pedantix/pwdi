@@ -7,7 +7,7 @@
 
 import Foundation
 
-@_functionBuilder
+@resultBuilder
 public struct ServiceBuilder {
   private static func convert(services: [Service]) -> ServiceFactories {
     return services.map({ service in PrototypeFactory(service: service) })

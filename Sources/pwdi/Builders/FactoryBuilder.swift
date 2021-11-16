@@ -24,7 +24,7 @@ public enum FactoryNode {
   }
 }
 
-@_functionBuilder
+@resultBuilder
 public struct FactoryBuilder {
   public static func buildBlock(_ node: FactoryNode) -> ServiceFactories {
     return node.factories
