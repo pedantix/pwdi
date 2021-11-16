@@ -6,9 +6,14 @@
 //
 
 import Foundation
+import AppKit
 
 public struct Qualifier {
-  let name: String
+    let name: String
+
+    public init(name: String) {
+        self.name = name
+    }
 }
 
 extension Qualifier {

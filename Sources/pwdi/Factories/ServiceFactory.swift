@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol ServiceFactory: class {
+public protocol ServiceFactory: AnyObject {
     var service: Service { get }
     func get(container: Container) throws -> Any
 }
