@@ -1,12 +1,11 @@
 //
-//  File.swift
+//  Qualifier.swift
 //  
 //
 //  Created by Shaun Hubbard on 4/24/20.
 //
 
 import Foundation
-import AppKit
 
 public struct Qualifier {
     let name: String
